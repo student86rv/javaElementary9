@@ -1,4 +1,4 @@
-package com.company;
+//package com.company;
 
 public class MyTreeMap implements MyMap {
 
@@ -7,7 +7,7 @@ public class MyTreeMap implements MyMap {
         private int value;
         private Node left;
         private Node right;
-        private Node parent;
+        //private Node parent;
 
         public Node(int key, int value) {
             this.key = key;
@@ -99,5 +99,22 @@ public class MyTreeMap implements MyMap {
     @Override
     public int size() {
         return size;
+    }
+	
+	 @Override
+	 public String toString() {
+		 StringBuilder sb = new StringBuilder("[");
+		 toStringAssistant(root, sb);
+		 sb.append("]");
+		 return sb.toString();
+	 }
+	 
+	  private void toStringAssistant(Node node, StringBuilder sb) {
+        if (node == null) {
+            return;
+        }
+        toStringAssistant(node.left, sb);
+        sb.append(node.key + "=" + node.value + " ");
+        toStringAssistant(node.right, sb);
     }
 }
